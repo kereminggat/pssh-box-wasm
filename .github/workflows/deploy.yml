@@ -45,7 +45,7 @@ jobs:
       - name: Build bundle
         run: |
            rm -rf dist/
-           (cd www-zola && zola build --output-dir ../dist)
+           (cd www-zola && zola build --output-dir../dist)
            wasm-pack build --release --target web --out-dir pkg
            # The generated WebAssembly
            cp -r pkg dist
@@ -107,4 +107,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        
+
+      - name: Copy protobuf-4*wasm32.whl to dist
+        run: |
+          cp /src/dist/pyodide/dist/protobuf-4*wasm32.whl dist/
+
+      - name: Run makesnap.mjs
+        run: |
+          cd dist && node --experimental-wasm-stack-switching makesnap.mjs
