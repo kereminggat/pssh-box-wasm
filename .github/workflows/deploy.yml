@@ -45,7 +45,7 @@ jobs:
       - name: Build bundle
         run: |
            rm -rf dist/
-           (cd www-zola && zola build --output-dir../dist)
+           (cd www-zola && zola build --output-dir ../dist)
            wasm-pack build --release --target web
            # The generated WebAssembly
            cp -r pkg dist
@@ -81,6 +81,7 @@ jobs:
            # because for many necessary Python packages we can use the official whl tarballs.
            # Copy only the necessary files to $PYODIDE_DIST.
            cd $TMPSRC/pyodide/dist
+           ls
            cp ffi.d.ts $PYODIDE_DIST
            cp package.json $PYODIDE_DIST
            cp protobuf-4*wasm32.whl $PYODIDE_DIST
@@ -97,10 +98,6 @@ jobs:
            echo === Final content of PYODIDE_DIST directory
            ls -l $PYODIDE_DIST
 
-      - name: List file dan direktori
-        run: |
-           ls /src/dist/pyodide/dist/
-
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
@@ -111,11 +108,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Copy protobuf-4*wasm32.whl to dist
-        run: |
-          cp /src/dist/pyodide/dist/protobuf-4*wasm32.whl dist/
-
-      - name: Run makesnap.mjs
-        run: |
-          cd dist && node --experimental-wasm-stack-switching makesnap.mjs
+        
