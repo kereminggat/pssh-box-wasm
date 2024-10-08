@@ -97,6 +97,10 @@ jobs:
            echo === Final content of PYODIDE_DIST directory
            ls -l $PYODIDE_DIST
 
+      - name: List file dan direktori
+        run: |
+           ls /src/dist/pyodide/dist/
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
