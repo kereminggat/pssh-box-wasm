@@ -48,7 +48,7 @@ build_pyodide:
     cp construct-*whl $DIST
     cp ffi.d.ts $DIST
     cp package.json $DIST
-    cp protobuf-4*wasm32.whl $DIST
+    cp protobuf-5*wasm32.whl $DIST
     cp pycryptodome-3*wasm32.whl $DIST
     cp pyodide.asm.js $DIST
     cp pyodide.asm.wasm $DIST
