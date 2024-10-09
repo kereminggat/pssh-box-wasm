@@ -115,8 +115,8 @@ jobs:
            # Menambahkan file dari folder yang terabaikan oleh.gitignore dengan opsi -f
            git add -f pssh-box-wasm/wheels/*
            
-           # Lakukan pull terlebih dahulu
-           git pull origin main
+           # Lakukan pull dengan rebase
+           git pull --rebase origin main
            
            # Commit dan push hasil build
            git commit -m "Add Pyodide build and required Python wheels"
