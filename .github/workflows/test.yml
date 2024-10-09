@@ -1,6 +1,6 @@
 on: [workflow_dispatch]
 
-name: test
+name: Test Simpan File
 
 jobs:
   deploy:
@@ -45,15 +45,12 @@ jobs:
       - name: Build bundle
         run: |
            rm -rf dist/
-           (cd www-zola && zola build --output-dir../dist)
+           (cd www-zola && zola build --output-dir ../dist)
            wasm-pack build --release --target web
            # The generated WebAssembly
            cp -r pkg dist
            find dist -type d -print0 | xargs -0 chmod 755
            find dist -type f -print0 | xargs -0 chmod 644
-
-      - name: Build pyodide
-        run: |
            # Build pyodide (Python compiled to WASM) alongside our required Python libraries
            # compiled to WASM (in particular those that include C code, such pycryptodome and
            # protobuf). We need to build the construct package v2.8.8 specially, because it's not
