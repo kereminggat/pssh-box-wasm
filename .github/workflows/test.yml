@@ -113,7 +113,9 @@ jobs:
            
            git commit -m "Add Pyodide build and required Python wheels"
            git push origin main
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
