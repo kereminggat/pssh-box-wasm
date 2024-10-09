@@ -54,18 +54,18 @@ and https://reference.dashif.org/dash.js/latest/samples/drm/license-wrapping.htm
       data-tooltip="The PSSH box (DRM initialization data)"
       pattern="\s*[A-Za-z0-9\-\+\/]*={0,3}\s*" placeholder="PSSH..." 
       required aria-invalid="true" autofocus />
-    <small>The DRM initialization data (PSSH box). Make sure this contains no spaces.</small>
+    <small>The DRM initialization data (PSSH box). example AAAAW3Bzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAADsIARIQ62dqu8s0Xpa7z2FmMPGj2hoNd2lkZXZpbmVfdGVzdCIQZmtqM2xqYVNkZmFsa3IzaioCSEQyAA==</small>
   </label>
   <label>License server URL (required)
     <input id="lurl" type="url" aria-describedby="lurl-help" required aria-invalid="true"/>
-    <small id="lurl-help">The URL of the Widevine license server</small>
+    <small id="lurl-help">The URL of the Widevine license server. example https://cwip-shaka-proxy.appspot.com/no_auth</small>
   </label>
   <label>Headers (optional)
     <textarea id="headers" placeholder="{ 'foo': 'bar' }" aria-describedby="headers-help"></textarea>
     <small id="headers-help">Any extra HTTP headers to include with the license request, 
     formatted as a Python dict. The HTML5 Fetch API used to make the request from your browser means
     that certain headers (including <tt>Accept-Encoding</tt>, <tt>Connection</tt> and
-    <tt>Content-Length</tt>) cannot be set.</small>
+    <tt>Content-Length</tt>) cannot be set. example {"user-agent": "Mozilla/5.0"}</small>
   </label>
   <label><abbr title="Content Decryption Module">CDM</abbr> device in WVD format (required)
     <input id="wvd" type="file" required aria-invalid="true"/>
