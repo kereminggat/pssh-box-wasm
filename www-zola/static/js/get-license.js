@@ -59,11 +59,12 @@ const py_license = `
 out = js.document.getElementById("output")
 wvd = b64decode(wvd_b64)
 device = Device.loads(wvd)
-# log += "<p>CDM device: {}".format(device)
+log += "<p>CDM device: {}".format(device.system_id, device.security_level)
 cdm = Cdm.from_device(device)
 session_id = cdm.open()
-log += "<p>CDM session: {}".format(session_id)
+log += "<p>CDM session: {}".format(session_id.hex())
 challenge = cdm.get_license_challenge(session_id, pypssh)
+log += "<p> Created License Request Message (Challenge): {}".format(challenge)
 have_license = False
 try:
    license = requests.post(lurl, headers=headers, data=challenge, timeout=20.0)
