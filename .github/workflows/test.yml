@@ -107,6 +107,10 @@ jobs:
            # Commit dan push hasil build
            git config user.name "github-actions[bot]"
            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+           # Set remote URL untuk menggunakan GITHUB_TOKEN
+           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kereminggat/pssh-box-wasm.git
+
            
            # Menambahkan file dari folder yang terabaikan oleh .gitignore dengan opsi -f
            git add -f pssh-box-wasm/wheels/*
