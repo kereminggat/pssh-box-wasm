@@ -107,7 +107,10 @@ jobs:
            # Commit dan push hasil build
            git config user.name "github-actions[bot]"
            git config user.email "github-actions[bot]@users.noreply.github.com"
-           git add pssh-box-wasm/wheels/*
+           
+           # Menambahkan file dari folder yang terabaikan oleh .gitignore dengan opsi -f
+           git add -f pssh-box-wasm/wheels/*
+           
            git commit -m "Add Pyodide build and required Python wheels"
            git push origin main
 
