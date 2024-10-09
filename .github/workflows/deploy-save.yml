@@ -101,7 +101,7 @@ jobs:
         run: |
            # Menyimpan hasil build ke repository
            mkdir -p pssh-box-wasm/wheels
-           cp -r $PYODIDE_DIST/* pssh-box-wasm/wheels/
+           cp -r protobuf-5.27.3-cp312-cp312-pyodide_2024_0_wasm32.whl pssh-box-wasm/wheels/
 
            git config user.name "github-actions[bot]"
            git config user.email "github-actions[bot]@users.noreply.github.com"
