@@ -20,7 +20,7 @@ implemented in WebAssembly and runs fully inside your web browser, meaning:
 browser’s Javascript console if things don’t work; you may see some extra diagnostics information.
 
 
-<!-- Some test vectors
+Some test vectors
 
 Manifest: 'https://devs.origin.cdn.cra.cz/dashmultikey/manifest.mpd'
 PSSH: AAAAZXBzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAAEUIARIQdb8zrAhEDIHWIwGch/4TYBoFQ2Vza2UiJDc1YmYzM2FjLTA4NDQtMGM4MS1kNjIzLTAxOWM4N2ZlMTM2MCoCU0Q=
@@ -46,7 +46,7 @@ Headers: empty
 
     
 and https://reference.dashif.org/dash.js/latest/samples/drm/license-wrapping.html
-    -->
+
 
 <form>
   <label>PSSH in base 64 (required)
