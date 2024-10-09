@@ -96,31 +96,31 @@ jobs:
            cp python_stdlib.zip $PYODIDE_DIST
            echo === Final content of PYODIDE_DIST directory
            ls -l $PYODIDE_DIST
-           
+
+      - name: Save Build bundle
+        run: |
            # Menyimpan hasil build ke repository
-           # Membuat folder wheels jika belum ada
            mkdir -p pssh-box-wasm/wheels
-           
-           # Salin hasil build dari direktori PYODIDE_DIST ke folder wheels
            cp -r $PYODIDE_DIST/* pssh-box-wasm/wheels/
-           
-           # Commit dan push hasil build
+
            git config user.name "github-actions[bot]"
            git config user.email "github-actions[bot]@users.noreply.github.com"
 
-           # Set remote URL untuk menggunakan GITHUB_TOKEN
            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/kereminggat/pssh-box-wasm.git
 
-           
-           # Menambahkan file dari folder yang terabaikan oleh.gitignore dengan opsi -f
-           git add -f pssh-box-wasm/wheels/*
-           
-           # Lakukan pull dengan rebase
-           git pull --rebase origin main
-           
-           # Commit dan push hasil build
-           git commit -m "Add Pyodide build and required Python wheels"
-           git push --force origin main
+           # Check for uncommitted changes
+           if git diff-index --quiet HEAD --; then
+             echo "No changes to commit"
+           else
+             git add -f pssh-box-wasm/wheels/*
+             git commit -m "Add Pyodide build and required Python wheels"
+
+             # Pull with rebase to avoid conflicts
+             git pull --rebase origin main
+           fi
+
+           # Push changes
+           git push --force origin main || echo "Push failed"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
